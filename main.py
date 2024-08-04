@@ -23,3 +23,24 @@ MOVE_VEL = 20
 
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('2048')
+
+
+def draw(window):
+    window.fill(BACKGROUND_COLOR)
+    pygame.display.update()
+
+def main(window):
+    clock = pygame.time.Clock()
+    run = True
+
+    while run:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                break
+
+            draw(WINDOW)
+
+if __name__ == '__main__':
+    main(WINDOW)
