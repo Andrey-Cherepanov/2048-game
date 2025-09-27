@@ -24,6 +24,29 @@ MOVE_VEL = 20
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('2048')
 
+class Tile:
+    COLORS = [
+        (237, 229, 218),
+        (238, 225, 201),
+        (243, 178, 122),
+        (246, 150, 101),
+        (247, 124, 95),
+        (247, 95, 59),
+        (237, 208, 115),
+        (237, 204, 99),
+        (236, 202, 80),
+    ]
+
+    def __init__(self, value, row, col):
+        self.value = value
+        self.row = row
+        self.col = col
+        self.x, self.y = col*RECT_WIDTH, row*RECT_HEIGHT
+
+    @property
+    def color(self):
+        return self.COLORS[int(math.log(self.value, 2))-1]
+
 def draw_grid(window):
     for row in range(1, ROWS):
         y = row * RECT_HEIGHT
